@@ -1,4 +1,5 @@
 package game;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,12 +10,12 @@ public class TheRoom {
     private JFrame window;
     //JFrame is the top level window, with border and a title bar
     private Container container;
-    private JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPannel, playerPanel;
+    private JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
     private JLabel titleNameLabel, subTitleLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName;
-    private Font titleFont = new Font("Myriad Pro", Font.PLAIN, 74);
-    private Font subTitleFont = new Font("Times New Roman", Font.PLAIN, 32);
+    private Font titleFont = new Font("Myriad Pro", Font.PLAIN, 76);
+    private Font subTitleFont = new Font("Times New Roman", Font.PLAIN, 36);
     private Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
-    private Font choiceFont = new Font("Times New Roman", Font.ITALIC, 20);
+    private Font choiceFont = new Font("Times New Roman", Font.PLAIN, 20);
     private JButton startButton, choice1, choice2, choice3, choice4;
     private JTextArea mainTextArea;
 
@@ -95,17 +96,17 @@ public class TheRoom {
         mainTextArea.setWrapStyleWord(true);
         //basically acts as hyphenate function from design programs
 
-        choiceButtonPannel = new JPanel();
-        choiceButtonPannel.setBounds(200, 350, 400, 150);
-        choiceButtonPannel.setBackground(Color.black);
-        choiceButtonPannel.setLayout(new GridLayout(4, 1));
-        container.add(choiceButtonPannel);
+        choiceButtonPanel = new JPanel();
+        choiceButtonPanel.setBounds(200, 350, 400, 150);
+        choiceButtonPanel.setBackground(Color.black);
+        choiceButtonPanel.setLayout(new GridLayout(4, 1));
+        container.add(choiceButtonPanel);
 
         choice1 = new JButton("1:");
         choice1.setBackground(Color.black);
         choice1.setForeground(Color.white);
         choice1.setFont(choiceFont);
-        choiceButtonPannel.add(choice1);
+        choiceButtonPanel.add(choice1);
         choice1.setFocusPainted(false);
         choice1.addActionListener(choiceHandler);
         choice1.setActionCommand("c1");
@@ -114,7 +115,7 @@ public class TheRoom {
         choice2.setBackground(Color.black);
         choice2.setForeground(Color.white);
         choice2.setFont(choiceFont);
-        choiceButtonPannel.add(choice2);
+        choiceButtonPanel.add(choice2);
         choice2.setFocusPainted(false);
         choice2.addActionListener(choiceHandler);
         choice2.setActionCommand("c2");
@@ -123,7 +124,7 @@ public class TheRoom {
         choice3.setBackground(Color.black);
         choice3.setForeground(Color.white);
         choice3.setFont(choiceFont);
-        choiceButtonPannel.add(choice3);
+        choiceButtonPanel.add(choice3);
         choice3.setFocusPainted(false);
         choice3.addActionListener(choiceHandler);
         choice3.setActionCommand("c3");
@@ -132,7 +133,7 @@ public class TheRoom {
         choice4.setBackground(Color.black);
         choice4.setForeground(Color.white);
         choice4.setFont(choiceFont);
-        choiceButtonPannel.add(choice4);
+        choiceButtonPanel.add(choice4);
         choice4.setFocusPainted(false);
         choice4.addActionListener(choiceHandler);
         choice4.setActionCommand("c4");
@@ -183,7 +184,8 @@ public class TheRoom {
     public void darkRoom() {
 
         position = "darkRoom";
-        mainTextArea.setText("'You are in a pitch black room, the room is so dark you can't even see your hand in front of your face.'\n"
+        mainTextArea.setText("You are in a pitch black room,"
+                + " the room is so dark you can't even see your hand in front of your face.\n"
                 + "\n" + "What do you do?");
 
         choice1.setText("Feel Around for any objects");
@@ -196,21 +198,109 @@ public class TheRoom {
     public void feelObjects() {
 
         position = "feelObjects";
-        mainTextArea.setText("'You feel around, running your hands along the damp and cold stone and to your surprise you find a sizable Kitchen Knife'");
+        mainTextArea.setText("You feel around, running your hands along"
+                + " the damp and cold stone and to your surprise you find a sizable Kitchen Knife'");
 
         choice1.setText("Pick up");
-        choice2.setText("Do Nothing");
+        choice2.setText("");
         choice3.setText("");
         choice4.setText("");
 
     }
 
+    public void knifeInHand() {
+
+        weapon = "Knife";
+        weaponLabelName.setText(weapon);
+
+        position = "knifeInHand";
+        mainTextArea.setText("With your new weapon in hand you feel more confident for whatever lies ahead.\n"
+                + "\n\n" + "You hear the distant and muffled sound of a torch flickering...");
+
+        choice1.setText("Next");
+        choice2.setText("");
+        choice3.setText("");
+        choice4.setText("");
+
+    }
+
+    public void approachTheSound() {
+
+        /*
+        weapon = "Knife";
+        weaponLabelName.setText(weapon);
+        */
+
+        position = "approachTheSound";
+        mainTextArea.setText("As you realise the presence of a new sound,"
+                + "you instantly mobilise with new found determination to get out of the darkness.\n"
+                + "\nYou slowly get into a crouched position ready to spring into action.");
+
+        choice1.setText("Next");
+        choice2.setText("");
+        choice3.setText("");
+        choice4.setText("");
+
+    }
+
+    public void exitTheRoom() {
+
+        position = "exitTheRoom";
+        mainTextArea.setText("You slowly walk towards the direction of the sound carefully feeling around as you go.\n"
+                + "\nAs you get closer to the source of the sound you brush up against a big wooden door with a hefty metal lock.");
+
+        choice1.setText("Next");
+        choice2.setText("");
+        choice3.setText("");
+        choice4.setText("");
+    }
+
     public void standingUp() {
 
         position = "standingUp";
-        mainTextArea.setText("'You rush to your feet only to hit your head into some heavy chains\n\nThe sound of rattling chains echos throughout the room'\n(You receive 5 damage)");
+        mainTextArea.setText("You rush to your feet only to hit your head into some heavy chains"
+                + "\n\n" + "The sound of rattling chains echos throughout the room"
+                + "\n" + "(You receive 5 damage)");
+
+        choice1.setText("Next");
+        choice2.setText("");
+        choice3.setText("");
+        choice4.setText("");
+
+    }
+
+    public void checkingYourHead(){
+
+        position = "checkingYourHead";
+        mainTextArea.setText("");
 
         choice1.setText("");
+        choice2.setText("");
+        choice3.setText("");
+        choice4.setText("");
+    }
+
+    public void callingForHelp() {
+
+        position = "darkRoom";
+        mainTextArea.setText("You try shouting out to see if anyone is nearby."
+        + "\n" + "Seems like nobody is responded to your calls.");
+
+        choice1.setText("Next");
+        choice2.setText("");
+        choice3.setText("");
+        choice4.setText("");
+
+    }
+
+    public void listenForSounds() {
+
+        position = "darkRoom";
+        mainTextArea.setText("You still you breath as you listen for any sounds...\n"
+                + "\nYou notice the faint wispy sound of a torch flickering in the distance"
+                + ", almost as if muffled by something");
+
+        choice1.setText("Next");
         choice2.setText("");
         choice3.setText("");
         choice4.setText("");
@@ -234,15 +324,18 @@ public class TheRoom {
                             standingUp();
                             break;
                         case "c3":
+                            callingForHelp();
                             break;
                         case "c4":
+                            listenForSounds();
                             break;
                     }
                     break;
+
                 case "feelObjects":
                     switch (yourChoice) {
                         case "c1":
-                            darkRoom();
+                            knifeInHand();
                             break;
                         case "c2":
                             darkRoom();
@@ -254,7 +347,108 @@ public class TheRoom {
                             darkRoom();
                             break;
                     }
+                    break;
 
+                case "knifeInHand":
+                    switch (yourChoice) {
+                        case "c1":
+                            approachTheSound();
+                            break;
+                        case "c2":
+                            knifeInHand();
+                            break;
+                        case "c3":
+                            knifeInHand();
+                            break;
+                        case "c4":
+                            knifeInHand();
+                            break;
+                    }
+                    break;
+
+                case "approachTheSound":
+                    switch (yourChoice){
+                        case "c1":
+                            exitTheRoom();
+                            break;
+                        case "c2":
+                            approachTheSound();
+                            break;
+                        case "c3":
+                            approachTheSound();
+                            break;
+                        case "c4":
+                            approachTheSound();
+                            break;
+                    }
+                    break;
+
+                case "exitTheRoom":
+                    switch (yourChoice){
+                        case "c1":
+                            break;
+                        case "c2":
+                            exitTheRoom();
+                            break;
+                        case "c3":
+                            exitTheRoom();
+                            break;
+                        case "c4":
+                            exitTheRoom();
+                            break;
+                    }
+                    break;
+
+                case "callingForHelp":
+                    switch (yourChoice){
+                        case "c1":
+                            break;
+                        case "c2":
+                            callingForHelp();
+                            break;
+                        case "c3":
+                            callingForHelp();
+                            break;
+                        case "c4":
+                            callingForHelp();
+                            break;
+                    }
+                    break;
+
+                case "listenForSounds":
+                    switch (yourChoice){
+                        case "c1":
+                            approachTheSound();
+                            break;
+                        case "c2":
+                            listenForSounds();
+                            break;
+                        case "c3":
+                            listenForSounds();
+                            break;
+                        case "c4":
+                            listenForSounds();
+                            break;
+                    }
+                    break;
+
+                case "x":
+                    switch (yourChoice){
+                        case "c1":
+                        case "c2":
+                        case "c3":
+                        case "c4":
+                    }
+                    break;
+
+                case "c":
+                    switch (yourChoice){
+                        case "c1":
+                        case "c2":
+                        case "c3":
+                        case "c4":
+                    }
+                    break;
             }
 
         }
